@@ -557,9 +557,7 @@ class _MathMatrixState extends State<MathMatrix> {
                         "=",
                         style: TextStyle(
                           fontSize: 30,
-                          color: isDarktheme
-                              ? darktextinbttncolor
-                              : textinbttncolor,
+                          color: darktextinbttncolor,
                         ),
                       ),
                     ),
