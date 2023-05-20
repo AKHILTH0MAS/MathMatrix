@@ -551,6 +551,7 @@ class _MathMatrixState extends State<MathMatrix> {
                       onPressed: () {
                         setState(() {
                           answer = _findanswer();
+                          activeString = true;
                         });
                       },
                       child: Text(
