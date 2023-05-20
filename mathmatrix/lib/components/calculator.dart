@@ -15,6 +15,7 @@ class _MathMatrixState extends State<MathMatrix> {
   String stringtwo = "";
   bool activeString = true;
   double answer = 0;
+  bool isDarktheme = true;
   double _findanswer() {
     if (character == "+") {
       return double.parse(stringone) + double.parse(stringtwo);
@@ -46,17 +47,35 @@ class _MathMatrixState extends State<MathMatrix> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: isDarktheme ? darkprimaryColor : primaryColor,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: primaryColor,
-        title: const Text(
+        backgroundColor: isDarktheme ? darkprimaryColor : primaryColor,
+        title: Text(
           "Math Matrix",
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
+            color: isDarktheme ? darktextinbttncolor : textinbttncolor,
           ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  isDarktheme = !isDarktheme;
+                });
+              },
+              child: Icon(
+                isDarktheme ? Icons.wb_sunny : Icons.nightlight_round,
+                size: 30,
+                color: isDarktheme ? darktextinbttncolor : textinbttncolor,
+              ),
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -65,7 +84,7 @@ class _MathMatrixState extends State<MathMatrix> {
             Container(
               height: 200,
               width: double.infinity,
-              color: ansboardcolor,
+              color: isDarktheme ? darkansboardcolor : ansboardcolor,
               padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -75,9 +94,10 @@ class _MathMatrixState extends State<MathMatrix> {
                   ),
                   Text(
                     "$stringone $character $stringtwo", // This is the answer
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 50,
-                      color: Colors.white,
+                      color:
+                          isDarktheme ? darktextinbttncolor : textinbttncolor,
                     ),
                   ),
                   SizedBox(
@@ -85,9 +105,10 @@ class _MathMatrixState extends State<MathMatrix> {
                   ),
                   Text(
                     answer.toString(), // This is the answer
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 50,
-                      color: Colors.white,
+                      color:
+                          isDarktheme ? darktextinbttncolor : textinbttncolor,
                     ),
                   ),
                 ],
@@ -111,11 +132,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           answer = 0;
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "AC",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -125,10 +148,12 @@ class _MathMatrixState extends State<MathMatrix> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.backspace,
                           size: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -139,11 +164,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           activeString = false;
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "%",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -163,11 +190,11 @@ class _MathMatrixState extends State<MathMatrix> {
                           activeString = false;
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "÷",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: textinbttncolor,
                         ),
                       ),
                     ),
@@ -189,11 +216,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "7",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -207,11 +236,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "8",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -225,11 +256,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "9",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -249,11 +282,11 @@ class _MathMatrixState extends State<MathMatrix> {
                           activeString = false;
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "x",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: textinbttncolor,
                         ),
                       ),
                     ),
@@ -275,11 +308,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "4",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -293,11 +328,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "5",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -311,11 +348,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "6",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -335,11 +374,11 @@ class _MathMatrixState extends State<MathMatrix> {
                           activeString = false;
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "-",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: textinbttncolor,
                         ),
                       ),
                     ),
@@ -361,11 +400,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "1",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -379,11 +420,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "2",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -397,11 +440,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "3",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -421,11 +466,11 @@ class _MathMatrixState extends State<MathMatrix> {
                           activeString = false;
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "+",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: textinbttncolor,
                         ),
                       ),
                     ),
@@ -443,11 +488,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           _backspace();
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "C",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -461,11 +508,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "0",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -479,11 +528,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           }
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         ".",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
@@ -502,11 +553,13 @@ class _MathMatrixState extends State<MathMatrix> {
                           answer = _findanswer();
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         "=",
                         style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: isDarktheme
+                              ? darktextinbttncolor
+                              : textinbttncolor,
                         ),
                       ),
                     ),
