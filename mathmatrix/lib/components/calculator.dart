@@ -13,6 +13,7 @@ class _MathMatrixState extends State<MathMatrix> {
   String character = "";
   String stringone = "";
   String stringtwo = "";
+  List<String> previosans = [""];
   bool activeString = true;
   double answer = 0;
   bool isDarktheme = true;
@@ -86,32 +87,37 @@ class _MathMatrixState extends State<MathMatrix> {
               width: double.infinity,
               color: isDarktheme ? darkansboardcolor : ansboardcolor,
               padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.04,
-                  ),
-                  Text(
-                    "$stringone $character $stringtwo", // This is the answer
-                    style: TextStyle(
-                      fontSize: 50,
-                      color:
-                          isDarktheme ? darktextinbttncolor : textinbttncolor,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.04,
                     ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.01,
-                  ),
-                  Text(
-                    answer.toString(), // This is the answer
-                    style: TextStyle(
-                      fontSize: 50,
-                      color:
-                          isDarktheme ? darktextinbttncolor : textinbttncolor,
+                    Text(
+                      previosans[previosans.length - 1],
+                      style: TextStyle(
+                        fontSize: 40,
+                        color:
+                            isDarktheme ? darktextinbttncolor : textinbttncolor,
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.01,
+                    ),
+                    Text(
+                      "$stringone $character $stringtwo", // This is the answer
+                      style: TextStyle(
+                        fontSize: 40,
+                        color:
+                            isDarktheme ? darktextinbttncolor : textinbttncolor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.01,
+                    ),
+                  ],
+                ),
               ),
             ),
             Column(
@@ -130,6 +136,7 @@ class _MathMatrixState extends State<MathMatrix> {
                           activeString = true;
                           character = "";
                           answer = 0;
+                          previosans = [""];
                         });
                       },
                       child: Text(
@@ -552,6 +559,9 @@ class _MathMatrixState extends State<MathMatrix> {
                         setState(() {
                           answer = _findanswer();
                           activeString = true;
+                          previosans = previosans +
+                              ["$stringone\t$character\t$stringtwo = $answer"];
+                          stringone = character = stringtwo = "";
                         });
                       },
                       child: Text(
